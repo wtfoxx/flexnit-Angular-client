@@ -20,13 +20,19 @@ It reads from the same dedicated API [Movie API](https://github.com/wtfoxx/movie
 ## Local server
 If using it locally, please use either ports 4200, 8080 or 1234, as those are the ones allowed by CORS in my API. To choose a port when using Angular simply type `ng serve --port 1234`.
 To start off, install any dependencies by running
-```npm install
+```
+npm install
+
 ```
 Follow up by installing Angular CLI
-```npm install -g @angular/cli
+```
+npm install -g @angular/cli
+
 ```
 And finally, serve it in the desired port
-```ng serve --port 1234
+```
+ng serve --port 1234
+
 ```
 
 
