@@ -1,61 +1,6 @@
-<app-navbar></app-navbar>
-<div style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-evenly; padding: 50px 5%;">
-  <mat-card *ngFor="let movie of movies;" class="my-card" style="max-width: 300px; margin: 0 10px; margin-bottom: 40px; background-color: rgb(46, 46, 46);">
-    
-    <img mat-card-image style="margin-bottom: 0;" src={{movie.ImagePath}} alt={{movie.Title}} />
-
-    <mat-card-header style="align-items: center; justify-content: space-between; min-height: 80px;">
-      <mat-card-title style="font-size: 18px; margin: 8px 0;">{{movie.Title}} ({{movie.Year}})</mat-card-title>
-
-        <button (click)="favStatus(movie)" mat-icon-button style="vertical-align: middle; color: #C62828; padding-right: 7px;">
-          <mat-icon *ngIf="!isFav(movie._id)" style="font-size: 30px;">favorite_border</mat-icon>
-          <mat-icon *ngIf="isFav(movie._id)" style="font-size: 30px;">favorite</mat-icon>
-        </button>
-
-    </mat-card-header>
-
-    <mat-divider></mat-divider>
-
-    <mat-card-subtitle style="margin-left: 16px; padding-top: 16px;">
-
-      
-      Directed by: 
-      <button
-      style="padding: 0 5px;"
-      mat-button
-      color="link"
-      (click)="openDirector(movie.Director.Name, movie.Director.Bio, movie.Director.Birth)"
-      >
-      <u>{{movie.Director.Name}}</u>
-      </button>
- <br/>
-
-      <button
-      mat-stroked-button
-      color="white"
-      style="border-radius: 50px; margin-left: -3px;"
-      (click)="openGenre(movie.Genre.Name, movie.Genre.Description)"
-      >
-      {{movie.Genre.Name}}
-      </button> 
-    <br/>
-
-
-    </mat-card-subtitle>
-
-
-    <mat-card-actions style="display: flex; margin: auto; align-items: center; justify-content: center;">
-
-
-      <button
-        mat-flat-button
-        color="primary"
-        style="margin: 0; width: 100%;"
-        (click)="openSynopsis(movie.Title, movie.Year, movie.Description)"
-      >
-        Synopsis
-      </button>
-    </mat-card-actions>
-
-  </mat-card>
-</div>
+<mat-card *ngFor="let movie of movies; let i=index;">
+  <mat-dialog-content>
+    <mat-card-title>{{movie.Title}}jhg</mat-card-title>
+    <mat-card-subtitle><img src={{movie.ImagePath}}/></mat-card-subtitle>
+  </mat-dialog-content>
+</mat-card>
