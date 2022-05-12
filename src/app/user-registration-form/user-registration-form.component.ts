@@ -17,6 +17,9 @@ import { UserLoginFormComponent } from '../user-login-form/user-login-form.compo
   styleUrls: ['./user-registration-form.component.scss'],
 })
 export class UserRegistrationFormComponent implements OnInit {
+  /**
+   * Input sets `userData` to whatever the user inputs in the form fields.
+   */
   @Input() userData = {
     Username: '',
     Password: '',
@@ -34,6 +37,11 @@ export class UserRegistrationFormComponent implements OnInit {
   ngOnInit(): void {}
 
   //This is the function responsible for sending the form inputs to the backend
+  /**
+   * > Runs [[userRegistration]] passing [[userData]] forward<br/>
+   * > Closes current dialog and opens snackbar upon success<br/>
+   * > After a timeout, opens the [[UserLoginFormComponent]] dialog
+   */
   registerUser(): void {
     this.fetchApiData.userRegistration(this.userData).subscribe(
       (response) => {

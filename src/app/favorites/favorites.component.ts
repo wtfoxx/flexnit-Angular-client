@@ -23,6 +23,11 @@ export class FavoritesComponent implements OnInit {
     public dialog: MatDialog
   ) {}
 
+  /**
+   * > Gets [[currentUser]]<br/>
+   * > Gets [[userFavorites]]<br/>
+   * > Runs [[favoriteless]] on a **timeOut** to wait until userFavorites finishes loading.
+   */
   ngOnInit(): void {
     this.currentUser();
     this.userFavorites();
@@ -31,6 +36,9 @@ export class FavoritesComponent implements OnInit {
     }, 1000);
   }
 
+  /**
+   * > Opens the [[FavoritelessComponent]] dialog in case the user has no favorites in their collection.
+   */
   favoriteless(): void {
     if (this.favorites.length === 0) {
       this.dialog.open(FavoritelessComponent, {
@@ -39,6 +47,11 @@ export class FavoritesComponent implements OnInit {
     }
   }
 
+  /**
+   * > Pulls `user` from localStorage<br/>
+   * > if there is a user, fetches the uer with [[getUser]] and sets this.user as the fetched user<br/>
+   * @returns [[user]]
+   */
   currentUser(): void {
     const username = localStorage.getItem('user');
     if (username) {
@@ -50,6 +63,11 @@ export class FavoritesComponent implements OnInit {
     }
   }
 
+  /**
+   * > Fetches [[getAllMovies]] and filters only the movies included in this.user favorites list<br/>
+   * > Sets [[favorites]] as the array of movies found in [[user]] favorites list
+   * @returns [[favorites]]
+   */
   userFavorites(): void {
     this.fetchApiData.getAllMovies().subscribe((res: any) => {
       this.favorites = res.filter((movie: any) => {
@@ -60,6 +78,14 @@ export class FavoritesComponent implements OnInit {
     });
   }
 
+  /**
+   *
+   * @param id
+   * @param title
+   * > Fetches [[deleteFavorites]] using `id` in the header<br/>
+   * > Opens a snack bar featuring `title`
+   * @returns [[userFavorites]] to refresh the user's favorites
+   */
   removeFavorite(id: string, title: string): void {
     this.fetchApiData.deleteFavorites(id).subscribe((res: any) => {
       this.snackBar.open(`${title} was removed from you favorites.`, 'OK!', {
@@ -70,6 +96,13 @@ export class FavoritesComponent implements OnInit {
     return this.userFavorites();
   }
 
+  /**
+   *
+   * @param name
+   * @param bio
+   * @param birth
+   * > Opens dialog [[DirectorViewComponent]] passing `name`, `bio` and `birth` forward to it
+   */
   openDirector(name: string, bio: string, birth: Date): void {
     this.dialog.open(DirectorViewComponent, {
       data: {
@@ -81,6 +114,12 @@ export class FavoritesComponent implements OnInit {
     });
   }
 
+  /**
+   *
+   * @param name
+   * @param description
+   * > Opens dialog [[GenreViewComponent ]]passing `name` and `description` forward to it
+   */
   openGenre(name: string, description: string): void {
     this.dialog.open(GenreViewComponent, {
       data: {
@@ -91,6 +130,13 @@ export class FavoritesComponent implements OnInit {
     });
   }
 
+  /**
+   *
+   * @param title
+   * @param year
+   * @param description
+   * > Opens dialog [[SynopsisViewComponent]] passing `title`, year` and `description` forward to it
+   */
   openSynopsis(title: string, year: string, description: string): void {
     this.dialog.open(SynopsisViewComponent, {
       data: {

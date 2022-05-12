@@ -22,19 +22,35 @@ export class MovieCardComponent {
     public snackBar: MatSnackBar
   ) {}
 
+  /**
+   * > Fetches movies with [[getMovies]]<br/>
+   * > Runs [[setFavorites]]
+   */
   ngOnInit(): void {
     this.getMovies();
     this.setFavorites();
   }
 
+  /**
+   * > Runs [[getAllMovies]] to fetch all movies in database<br/>
+   * > Sets [[movies]] as movies fetched from database
+   * @returns [[movies]]
+   */
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
-      console.log(this.movies);
+      //console.log(this.movies);
       return this.movies;
     });
   }
 
+  /**
+   *
+   * @param name
+   * @param bio
+   * @param birth
+   * > Opens the [[DirectorViewComponent]] as a dialog passing `name`, `bio` and `birth` to it
+   */
   openDirector(name: string, bio: string, birth: Date): void {
     this.dialog.open(DirectorViewComponent, {
       data: {
@@ -46,6 +62,12 @@ export class MovieCardComponent {
     });
   }
 
+  /**
+   *
+   * @param name
+   * @param description
+   * > Opens the [[GenreViewComponent]] as a dialog passing `name` and `description` to it
+   */
   openGenre(name: string, description: string): void {
     this.dialog.open(GenreViewComponent, {
       data: {
@@ -56,6 +78,13 @@ export class MovieCardComponent {
     });
   }
 
+  /**
+   *
+   * @param title
+   * @param year
+   * @param description
+   * > Opens the [[SynopsisViewComponent]] as a dialog passing `title`, `year` and `description` to it
+   */
   openSynopsis(title: string, year: string, description: string): void {
     this.dialog.open(SynopsisViewComponent, {
       data: {
@@ -67,24 +96,47 @@ export class MovieCardComponent {
     });
   }
 
+  /**
+   * > Gets user from localStorage and set [[favorites]] the same as the current user's favorites<br/>
+   * @returns [[favorites]]
+   */
   setFavorites(): void {
     this.fetchApiData.getUser().subscribe((res: any) => {
       this.favorites = res.Favorites;
-      console.log(res.Favorites);
+      //console.log(res.Favorites);
       return this.favorites;
     });
   }
 
+  /**
+   *
+   * @param title
+   * > Tells if said `title` is present in [[favorites]]
+   * @returns
+   */
   isFav(title: string): boolean {
     return this.favorites.some((id) => id === title);
   }
 
+  /**
+   *
+   * @param movie
+   * > Runs [[isFav]] and runs either [[removeFavorite]] or [[addFavorite]] dependning on if the `movie` is or not in [[favorites]]
+   */
   favStatus(movie: any): void {
     this.isFav(movie._id)
       ? this.removeFavorite(movie._id, movie.Title)
       : this.addFavorite(movie._id, movie.Title);
   }
 
+  /**
+   *
+   * @param id
+   * @param title
+   * > Runs [[addFavorite]] passing `id` to it<br/>
+   * > Opens a snackbar featuring `title`
+   * @returns [[setFavorites]] to refresh [[favorites]]
+   */
   addFavorite(id: any, title: any): void {
     this.fetchApiData.addFavorite(id).subscribe((res: any) => {
       console.log(res);
@@ -95,6 +147,14 @@ export class MovieCardComponent {
     });
   }
 
+  /**
+   *
+   * @param id
+   * @param title
+   * > Runs [[removeFavorites]] passing `id` to it<br/>
+   * > Opens a snackbar featuring `title`
+   * @returns [[setFavorites]] to refresh [[favorites]]
+   */
   removeFavorite(id: any, title: any): void {
     this.fetchApiData.deleteFavorites(id).subscribe((res: any) => {
       console.log(res);

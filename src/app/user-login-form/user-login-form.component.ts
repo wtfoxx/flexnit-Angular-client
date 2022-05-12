@@ -10,6 +10,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-login-form.component.scss'],
 })
 export class UserLoginFormComponent implements OnInit {
+  /**
+   * Input sets `userData` to whatever the user inputs in the form fields.
+   */
   @Input() userData = {
     Username: '',
     Password: '',
@@ -24,6 +27,12 @@ export class UserLoginFormComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  /**
+   * > Runs [[userLogin]] passing [[userData]] forward<br/>
+   * > Sets localStorage `user` and `token` to the response from [[userLogin]]<br/>
+   * > Opens a snackbar on confirmation<br/>
+   * > Navigate to [[movies]]
+   */
   loginUser(): void {
     this.fetchApiData.userLogin(this.userData).subscribe(
       (response) => {
