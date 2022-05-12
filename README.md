@@ -22,18 +22,41 @@ If using it locally, please use either ports 4200, 8080 or 1234, as those are th
 To start off, install any dependencies by running
 ```
 npm install
-
 ```
 Follow up by installing Angular CLI
 ```
 npm install -g @angular/cli
-
 ```
 And finally, serve it in the desired port
 ```
 ng serve --port 1234
-
 ```
 
+## Screenshots [full imgur album here](https://imgur.com/a/My9hIda)
 
+![welcome web](https://i.imgur.com/c1x0dfe.png)
+Welcome page (web)
 
+![register web](https://i.imgur.com/8A7RNXv.png)
+Signup page (web)
+
+![login web](https://i.imgur.com/q0hK05q.png)
+Login page (web)
+
+![movies web](https://i.imgur.com/7jC65cG.png)
+Movies page (web)
+
+![director web](https://i.imgur.com/0BO6xkq.png)
+Dialog (web)
+
+![profile web](https://i.imgur.com/ggiCWFo.png)
+Profile (web)
+
+![favorites web](https://i.imgur.com/bUFWrVX.png)
+Favorites (web)
+
+![profile menu](https://i.imgur.com/bAEFE9c.png)
+Profile menu 
+
+![snackbar](https://i.imgur.com/yDeBIB9.png)
+Snackbar
