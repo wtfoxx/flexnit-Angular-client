@@ -1,27 +1,33 @@
-# FlexnitAngularClient
+# Flexnit Angular Client
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.5.
+Access the live deployed version [here](https://wtfoxx.github.io/flexnit-Angular-client/welcome)!
 
-## Development server
+Flexnit Angular is a revisit on my previous [Flexnit React](https://github.com/wtfoxx/flexnit-client) but using Angular this time.
+It reads from the same dedicated API [Movie API](https://github.com/wtfoxx/movie-api).
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Key features
+- A welcome screen where users can register or login.
+- Upon registering they will automatically be prompted to login
+- When logged in, the user can see the list of movies
+- All movies can be favorited
+- User can see information about each movie's director, genre or synopsis
+- By clicking their profile, users can see their profile information or see their favorites
+- In their profile, users can alter information about their account or delete the account
+- The list of favorites, if empty, will prompt you to go back to the list of movies
+- If you have favorites, it will show a list of your favorites, where you can see all information and also unfavorite them
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Local server
+If using it locally, please use either ports 4200, 8080 or 1234, as those are the ones allowed by CORS in my API. To choose a port when using Angular simply type `ng serve --port 1234`.
+To start off, install any dependencies by running
+```npm install
+```
+Follow up by installing Angular CLI
+```npm install -g @angular/cli
+```
+And finally, serve it in the desired port
+```ng serve --port 1234
+```
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
