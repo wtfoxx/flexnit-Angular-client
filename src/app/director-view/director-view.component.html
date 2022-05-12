@@ -1,0 +1,20 @@
+
+  <h1 mat-dialog-title style="margin: 0; display: flex; justify-content:space-between; align-items: center;">{{ data.Name }}<button 
+    mat-icon-button
+    aria-label="Close the director details button" 
+    mat-dialog-close 
+    color="primary">
+      <mat-icon>close</mat-icon>
+  </button></h1>
+  
+  <br>
+
+  <div mat-dialog-content style="display: flex; align-items: flex-end;"><mat-icon style="margin-right: 10px;">cake</mat-icon>{{ data.Birth | date }}</div>
+  
+  <br>
+
+  <div mat-dialog-content>{{ data.Bio }}</div><br>
+
+
+    
+

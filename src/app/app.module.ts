@@ -14,6 +14,29 @@ import { FormsModule } from '@angular/forms';
 import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
 import { UserLoginFormComponent } from './user-login-form/user-login-form.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { RouterModule, Routes } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { NavbarComponent } from './navbar/navbar.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
+import { ProfileComponent } from './profile/profile.component';
+import { FavoritesComponent } from './favorites/favorites.component';
+import { MatDividerModule } from '@angular/material/divider';
+import { DirectorViewComponent } from './director-view/director-view.component';
+import { GenreViewComponent } from './genre-view/genre-view.component';
+import { SynopsisViewComponent } from './synopsis-view/synopsis-view.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { FavoritelessComponent } from './favoriteless/favoriteless.component';
+
+const appRoutes: Routes = [
+  { path: 'welcome', component: WelcomePageComponent },
+  { path: 'movies', component: MovieCardComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'favorites', component: FavoritesComponent },
+  { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
+];
 
 @NgModule({
   declarations: [
@@ -21,6 +44,14 @@ import { MovieCardComponent } from './movie-card/movie-card.component';
     UserRegistrationFormComponent,
     UserLoginFormComponent,
     MovieCardComponent,
+    WelcomePageComponent,
+    NavbarComponent,
+    ProfileComponent,
+    FavoritesComponent,
+    DirectorViewComponent,
+    GenreViewComponent,
+    SynopsisViewComponent,
+    FavoritelessComponent,
   ],
   imports: [
     HttpClientModule,
@@ -35,6 +66,13 @@ import { MovieCardComponent } from './movie-card/movie-card.component';
     MatCardModule,
     MatFormFieldModule,
     MatSnackBarModule,
+    RouterModule.forRoot(appRoutes),
+    MatIconModule,
+    MatGridListModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatDividerModule,
+    MatTooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
